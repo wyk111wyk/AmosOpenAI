@@ -198,12 +198,8 @@ extension OpenAI {
 extension OpenAI {
     
     func buildURL(path: String) -> URL {
-        var components = URLComponents()
-        components.scheme = configuration.scheme
-        components.host = configuration.host
-        components.port = configuration.port
-        components.path = path
-        return components.url!
+        let fullUrl = configuration.scheme + "//" + configuration.host + path
+        return URL(string: fullUrl)!
     }
 }
 
