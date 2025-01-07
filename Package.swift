@@ -4,18 +4,18 @@
 import PackageDescription
 
 let package = Package(
-    name: "AmosOpenAI",
+    name: "OpenAI",
     products: [
         .library(
-            name: "AmosOpenAI",
-            targets: ["AmosOpenAI"]),
+            name: "OpenAI",
+            targets: ["OpenAI"]),
     ],
     targets: [
         .target(
-            name: "AmosOpenAI",
+            name: "OpenAI",
             dependencies: []),
         .testTarget(
             name: "OpenAITests",
-            dependencies: ["AmosOpenAI"]),
+            dependencies: ["OpenAI"]),
     ]
 )
