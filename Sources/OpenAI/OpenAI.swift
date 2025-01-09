@@ -129,6 +129,7 @@ extension OpenAI {
             let request = try request.build(token: configuration.token, 
                                             organizationIdentifier: configuration.organizationIdentifier,
                                             timeoutInterval: configuration.timeoutInterval)
+            debugPrint("请求：\(request)")
             let task = session.dataTask(with: request) { data, _, error in
                 if let error = error {
                     return completion(.failure(error))
@@ -198,7 +199,12 @@ extension OpenAI {
 extension OpenAI {
     
     func buildURL(path: String) -> URL {
-        let fullUrl = configuration.scheme + "//" + configuration.host + path
+        let path_: String =
+        if configuration.host == "ark.cn-beijing.volces.com/api/v3" {
+            path.replacingOccurrences(of: "/v1", with: "")
+        }else { path }
+        
+        let fullUrl = configuration.scheme + "://" + configuration.host + path_
         return URL(string: fullUrl)!
     }
 }
